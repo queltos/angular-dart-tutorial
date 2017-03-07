@@ -12,7 +12,7 @@ import 'hero.dart';
     templateUrl: 'hero_search_component.html',
     styleUrls: const ['hero_search_component.css'],
     providers: const [HeroSearchService])
-class HeroSearchComponent {
+class HeroSearchComponent implements OnInit {
   HeroSearchService _heroSearchService;
   Router _router;
 
@@ -23,11 +23,7 @@ class HeroSearchComponent {
   HeroSearchComponent(this._heroSearchService, this._router) {}
 
   // Push a search term into the stream.
-  void search(String term) {
-    print('HeroSearchComponent.search($term) called');
-    _searchTerms.add(term);
-    print(heroes.toList());
-  }
+  void search(String term) => _searchTerms.add(term);
 
   Future<Null> ngOnInit() async {
     heroes = _searchTerms.stream
